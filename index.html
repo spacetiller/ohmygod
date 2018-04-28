@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <h1>Info Contract</h1>
+
+        <h2 id="info"></h2>
+
+        <label for="name" class="col-lg-2 control-label">Name</label>
+        <input id="name" type="text">
+
+        <label for="name" class="col-lg-2 control-label">Age</label>
+        <input id="age" type="text">
+
+        <button id="button">Update Info</button>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+        }
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+
+		web3.version.getNetwork((err, netId) => {
+		  console.log(netId);
+		  switch (netId) {
+		    case "1":
+		      console.log('This is mainnet')
+		      break
+		    case "2":
+		      console.log('This is the deprecated Morden test network.')
+		      break
+		    case "3":
+		      console.log('This is the ropsten test network.')
+		      break
+		    case "4":
+		      console.log('This is the Rinkeby test network.')
+		      break
+		    case "42":
+		      console.log('This is the Kovan test network.')
+		      break
+		    default:
+		      console.log('This is an unknown network.')
+		  }
+		})
+
+
+		var hello2Contract = web3.eth.contract([{"constant":true,"inputs":[],"name":"speaker","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"say","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"times","outputs":[{"name":"","type":"uint32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getTimes","outputs":[{"name":"","type":"uint32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"greeting","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_greeting","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
+        var hello = hello2Contract.at('0x627306090abaB3A6e1400e9345bC60c78a8BEf57');
+
+		var _greeting = "hi2" ;
+		var hello2 = hello2Contract.new(
+		   _greeting,
+		   {
+		     from: '0x627306090abaB3A6e1400e9345bC60c78a8BEf57', 
+		     data: '0x608060405234801561001057600080fd5b506040516105bb3803806105bb8339810180604052810190808051820192919050505080600090805190602001906100499291906100b3565b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600160146101000a81548163ffffffff021916908363ffffffff16021790555050610158565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100f457805160ff1916838001178555610122565b82800160010185558215610122579182015b82811115610121578251825591602001919060010190610106565b5b50905061012f9190610133565b5090565b61015591905b80821115610151576000816000905550600101610139565b5090565b90565b610454806101676000396000f30060806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063840931c614610072578063954ab4b2146100c95780639e3b34bf14610159578063e9ab77e514610190578063ef690cc0146101c7575b600080fd5b34801561007e57600080fd5b50610087610257565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100d557600080fd5b506100de61027d565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561011e578082015181840152602081019050610103565b50505050905090810190601f16801561014b5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561016557600080fd5b5061016e61035a565b604051808263ffffffff1663ffffffff16815260200191505060405180910390f35b34801561019c57600080fd5b506101a5610370565b604051808263ffffffff1663ffffffff16815260200191505060405180910390f35b3480156101d357600080fd5b506101dc61038a565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561021c578082015181840152602081019050610201565b50505050905090810190601f1680156102495780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60606001601481819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff1602179055505060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103505780601f1061032557610100808354040283529160200191610350565b820191906000526020600020905b81548152906001019060200180831161033357829003601f168201915b5050505050905090565b600160149054906101000a900463ffffffff1681565b6000600160149054906101000a900463ffffffff16905090565b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104205780601f106103f557610100808354040283529160200191610420565b820191906000526020600020905b81548152906001019060200180831161040357829003601f168201915b5050505050815600a165627a7a72305820d1f720759814ccd79e33bf95ce8f8f1e0efbfc4480100137d54ce5c8bb86f0f70029', 
+		     gas: '4700000'
+		   }, function (e, contract){
+		       console.log(e, contract);
+		       if (typeof contract.address !== 'undefined') {
+		           console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+		       }
+		});
+
+		hello2.deploy({
+		    data: MyTokenBin,
+		    arguments: [32222, 'token on web3',0,'web3']
+		}).send({
+		    from: '0x1a9ec3b0b807464e6d3398a59d6b0a369bf422fa',
+		    gas: 1500000,
+		    gasPrice: '30000000000000'
+		}, function(error, transactionHash){
+		    console.log("deploy tx hash:"+transactionHash)
+		})
+		.on('error', function(error){ console.error(error) })
+		.on('transactionHash', function(transactionHash){ console.log("hash:",transactionHash)})
+		.on('receipt', function(receipt){
+		   console.log(receipt.contractAddress) // contains the new contract address
+		})
+		.on('confirmation', function(confirmationNumber, receipt){console.log("receipt,",receipt)})
+		.then(function(newContractInstance){
+		    console.log(newContractInstance.options.address) // instance with the new contract address
+		});
+
+
+
+        hello2.methods.say().call(null,function(error,result){
+	        console.log("say: "+result);
+	    });
+
+        var infoContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"getInfo","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_fName","type":"string"},{"name":"_age","type":"uint256"}],"name":"setInfo","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],'0x627306090abaB3A6e1400e9345bC60c78a8BEf57');
+
+        var info = infoContract.at('0x627306090abaB3A6e1400e9345bC60c78a8BEf57');
+
+		
+
+        info.getInfo(function(error, result){
+            if(!error)
+                {
+                    $("#info").html(result[0]+' ('+result[1]+' years old)');
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+
+        $("#button").click(function() {
+            info.setInfo($("#name").val(), $("#age").val());
+        });
+
+    </script>
+
+</body>
+</html>
