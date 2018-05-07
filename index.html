@@ -29,9 +29,22 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script-->
 
     <script>
+		if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+        }
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
 		web3.version.getNetwork((err, netId) => {
 		  console.log(netId);
 		  switch (netId) {
@@ -54,22 +67,11 @@
 		      console.log('This is an unknown network.')
 		  }
 		});        
-				
-		if (typeof web3 !== 'undefined') {
-            web3 = new Web3(web3.currentProvider);
-        } else {
-            // set the provider you want from Web3.providers
-            web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
-        }
-
-        web3.eth.defaultAccount = web3.eth.accounts[0];
-
-
-
-
-
+        
+        
+        
 		var hello2Contract = web3.eth.contract([{"constant":true,"inputs":[],"name":"speaker","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"say","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"times","outputs":[{"name":"","type":"uint32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getTimes","outputs":[{"name":"","type":"uint32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"greeting","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_greeting","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
-        var hello = hello2Contract.at('0x627306090abaB3A6e1400e9345bC60c78a8BEf57');
+        var hello2 = hello2Contract.at('0x627306090abaB3A6e1400e9345bC60c78a8BEf57');
 
 		var _greeting = "hi2" ;
 		var hello2 = hello2Contract.new(
@@ -85,7 +87,7 @@
 		       }
 		});
 
-		hello2.deploy({
+		/*hello2.deploy({
 		    data: MyTokenBin,
 		    arguments: [32222, 'token on web3',0,'web3']
 		}).send({
@@ -106,10 +108,10 @@
 		});
 
 
-
         hello2.methods.say().call(null,function(error,result){
 	        console.log("say: "+result);
 	    });
+*/
 
         var infoContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"getInfo","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_fName","type":"string"},{"name":"_age","type":"uint256"}],"name":"setInfo","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],'0x627306090abaB3A6e1400e9345bC60c78a8BEf57');
 
