@@ -1,2 +1,3 @@
 # ohmygod
-OhMyGod is a test project on Web3 and Ethereum. It aims to realize the avatar of some common gods on ethereum.
+OhMyGod is a test project on Web3 and Ethereum.
+What's more, it is also a project for web testing.
