@@ -132,6 +132,10 @@
         $("#button").click(function() {
             info.setInfo($("#name").val(), $("#age").val());
         });
+        
+        web3.eth.getAccounts(function(error, result){ 
+        	console.log(result); 
+        });
 
     </script>
 
