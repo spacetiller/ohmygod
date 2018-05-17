@@ -1,0 +1,35 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "OhMyGod is a test project on Web3 and Ethereum.\r What's more, it is also a project for web testing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "juncheng",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.0.0-beta.34"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "grunt": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-watch": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spacetiller/ohmygod.git"
+  },
+  "keywords": [
+    "hello",
+    "nodejs"
+  ],
+  "bugs": {
+    "url": "https://github.com/spacetiller/ohmygod/issues"
+  },
+  "homepage": "https://github.com/spacetiller/ohmygod#readme"
+}
