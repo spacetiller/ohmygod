@@ -1,3 +1,3 @@
 # ohmygod
-OhMyGod is a test project on Web3 and Ethereum.
-What's more, it is also a project for web testing.
+OhMyGod es un proyecto de prueba en Web3 y Ethereum.
+Además, también es un proyecto para pruebas web.
