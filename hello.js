@@ -1,6 +1,6 @@
 // hello contract access via Web3.js
 var express = require('express');
-//var web3 = require('web3');
+var Web3 = require('web3');
 var app = express();
  
 app.get('/', function (req, res) {
