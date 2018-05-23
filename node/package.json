@@ -4,7 +4,8 @@
   "description": "OhMyGod is a test project on Web3 and Ethereum.\r What's more, it is also a project for web testing.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "juncheng",
   "license": "ISC",
