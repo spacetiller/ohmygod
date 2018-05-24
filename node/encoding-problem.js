@@ -1,5 +1,5 @@
 var fs = require("fs");
-var iconv = require("iconv");
+var iconv = require("iconv-lite");
 
 var buffer = Buffer.from(fs.readFileSync('input.txt',{encoding:'binary'}),'binary');
 console.log(buffer);//得到文件内容对应的Buffer
