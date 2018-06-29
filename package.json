@@ -84,6 +84,7 @@
       "resolved": "https://registry.npmjs.org/base64-js/-/base64-js-1.2.3.tgz",
       "version": "1.2.3"
     },
+    "bcrypt": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
     "bcrypt-pbkdf": {
       "integrity": "sha1-Y7xdy2EzG5K8Bf1SiVPDNGKgb40=",
